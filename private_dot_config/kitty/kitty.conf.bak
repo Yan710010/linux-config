@@ -1,0 +1,58 @@
+# vim:fileencoding=utf-8:foldmethod=marker
+
+# BEGIN_KITTY_THEME
+# 1984 Dark
+include current-theme.conf
+# END_KITTY_THEME
+
+# BEGIN_KITTY_FONTS
+font_family      family='Monaspace Radon NF' features='+calt +liga +ss01 +ss02 +ss03 +ss04 +ss05 +ss06 -ss07 -ss08 +ss09 +ss10'
+bold_font        auto
+italic_font      auto
+bold_italic_font auto
+# END_KITTY_FONTS
+
+# <=> == >= ->
+
+font_size 11.0
+
+# Disable ligature when cursor is over the text (seems not working...)
+disable_ligatures cursor
+
+## 取消退出终端时的确认
+confirm_os_window_close 0
+
+## 光标设置
+# cursor none
+# 光标闪烁
+cursor_blink_interval 0.5 ease-in-out
+# 闪烁停止延时
+cursor_stop_blinking_after 3.0
+# (超级酷炫的)光标轨迹动画
+# (数字单位ms, 光标在某一位置停留时间达到此时间则触发动画)
+cursor_trail 50
+# 光标轨迹淡出速度
+cursor_trail_decay 0.1 0.4
+
+## 回滚历史相关设置
+# 指示器不透明度
+scrollback_indicator_opacity 0.5
+# 查看回滚的工具
+scrollback_pager bat
+
+## Tab
+tab_bar_style powerline
+
+## 外观设置
+# 透明度!!
+background_opacity 0.8
+# 替换特定颜色背景下的透明度
+# 主要是helix的文字背景
+transparent_background_colors #16181A@0.95 #12100E@0.95
+# 允许动态调整
+dynamic_background_opacity yes
+
+## Advanced
+# 启动时打开的shell
+shell zsh
+editor helix

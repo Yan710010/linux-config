@@ -1,0 +1,4 @@
+if ! tmux has-session -t onion27 &> /dev/null; then
+    tmux new-session -d -x 172 -y 40 -s onion27 -c $HOME
+fi
+

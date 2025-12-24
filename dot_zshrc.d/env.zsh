@@ -1,0 +1,1 @@
+export WINEDEBUG=fixme-all

@@ -1,0 +1,112 @@
+@import url("file:///etc/xdg/waybar/style.css");
+
+* {
+    border-radius: 0 0 5px 5px;
+    /* margin: 1px; */
+    /* margin-top: 2px; */
+    /* margin-bottom: 2px; */
+    font-family: "serif";
+    font-size: 13;
+}
+
+window#waybar {
+    background: transparent;
+    border: none;
+}
+
+window > box {
+	margin: 2px;
+    margin-bottom: 0;
+    margin-top: 0;
+    background: rgba(27,27,27,0.0);
+    color: white;
+}
+
+tooltip {
+    border-radius: 5px;
+}
+
+menu, menuitem {
+    border-radius: 10px;
+}
+
+#submap {
+    background: linear-gradient(to bottom right, #1f1e33);
+    color: #EFB3E0;
+    font-size: 14;
+    font-weight: bold;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+#workspaces {
+  border: none;
+}
+
+#workspaces button {
+    background: linear-gradient(to bottom right, #444444, #777777);
+    border: none;
+    border-radius: 0 0 5px 5px;
+    margin-left: 5px;
+    box-shadow: none;
+}
+
+#workspaces button:hover {
+    border: none;
+    background: #666666;
+}
+
+#workspaces button.active {
+    background: linear-gradient(to bottom right, #d0a0c0, #EFB3E0);
+    font-weight: bold;
+}
+
+#window {
+    background: linear-gradient(150deg, #C0FDFF 50%, #fefefe);
+    color: black;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#clock {
+    background: black;
+    color: white;
+    font-weight: bold;
+}
+
+/* 右边的一堆按钮 */
+#pulseaudio, #pulseaudio:hover, #pulseaudio.muted{
+    background: #5BCEFA;
+    color: white;
+}
+
+#backlight {
+    background: #F5A9B8;
+    color: white;
+}
+
+#battery {
+    background: #FFFFFF;
+    color: black;
+}
+#battery.charging {
+    background: white;
+    color: green;
+}
+
+#tray {
+    background: rgba(167, 167, 167, 0.8);
+}
+
+#custom-notification {
+    background: black;
+    color: white;
+    font-weight: bold;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#custom-notification.dnd-none , #custom-notification.dnd-notification{
+    color: gray;
+}
+

@@ -1,0 +1,84 @@
+hvars smr="submap, reset"
+
+bind {
+    submap run workspace
+    key ESCAPE
+    dispatcher $smr
+}
+
+// 启动器相关
+bind {
+    submap reset
+    modkey SUPER
+    key R
+    dispatcher submap,run
+}
+bind {
+    submap run
+    key R
+    once
+    dispatcher "exec, rofi -show run"
+}
+bind {
+    submap run
+    key D
+    once
+    dispatcher "exec, rofi -show drun"
+}
+bind {
+    submap run
+    key S
+    once
+    dispatcher "exec, rofi -show ssh"
+}
+bind {
+    submap run
+    key O
+    once
+    dispatcher \
+        "exec, notify-send -i osu-lazer -u low -e -t 2500 -a osu_launcher 'osu!启动!'" \
+        "exec, [workspace name:osu!] osu-lazer" \
+        "workspace, name:osu!"
+}
+
+// 切换工作区
+bind { modkey SUPER; key W; dispatcher "submap, workspace" }
+bind { submap workspace; modkey SUPER; key W; dispatcher $smr }
+bind {
+    submap workspace
+    key Q
+    dispatcher "workspace, e-1"
+}
+bind {
+    submap workspace
+    key E
+    dispatcher "workspace, e+1"
+}
+bind {
+    submap workspace
+    modkey SUPER
+    key Q
+    dispatcher "workspace, e-1"
+}
+bind {
+    submap workspace
+    modkey SUPER
+    key E
+    dispatcher "workspace, e+1"
+}
+
+bind {submap workspace; key D; dispatcher "workspace, name:伊蕾娜可爱" $smr}
+bind {submap workspace; key O; dispatcher "workspace, name:osu!" $smr}
+
+// 窗口规则喵
+rule {filter "title:(Fcitx5 Input Window)"; rule noblur}
+rule {
+    filter "class:wechat" "floating:1"
+    rule noshadow noblur
+}
+rule {filter class:kitty; rule noblur}
+rule {filter "class:QQ"; rule "opacity 0.9"}
+rule {filter "title:图片查看器"; rule "opacity 1.0"}
+rule {filter "title:视频播放器"; rule "opacity 1.0"}
+// 让HMCL默认悬浮
+rule {filter class:org.jackhuang.hmcl.Launcher; rule float noblur}
