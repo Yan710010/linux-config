@@ -9,10 +9,11 @@ if status is-interactive && set -q SSH_CONNECTION
     set -x SSH_USER_NAME \
         (echo $data | jq --raw-output ".[\"$SSH_USER_HASH\"]" )
     if test $SSH_USER_NAME != Yan -a $SSH_USER_NAME != 27Onion
+        # 发送提示语
         if test $SSH_USER_EXISTS = true
-            notify-send --app-name SSH --urgency critical "有人连上来了喵?" "公钥所有者: $SSH_USER_NAME, 于 $(date +"%Y/%m/%d %H:%M:%S")"
+            notify-send --app-name SSH --urgency critical "有人连上来了喵?" "公钥所有者: $SSH_USER_NAME, 于 $(date +"%Y/%m/%d %H:%M:%S")" -A 发现你了哦=回复 &
         else
-            notify-send --app-name SSH --urgency critical "有人连上来了喵?" "公钥: $SSH_USER_HASH, 于 $(date +"%Y/%m/%d %H:%M:%S")"
+            notify-send --app-name SSH --urgency critical "有人连上来了喵?" "公钥: $SSH_USER_HASH, 于 $(date +"%Y/%m/%d %H:%M:%S")" -A "...你谁"=回复 &
         end
     end
     # motd
