@@ -62,7 +62,7 @@ menu, menuitem {
 }
 
 #window {
-    background: linear-gradient(150deg, #FFB6C1 50%, #fefefe);
+    background: linear-gradient(150deg, #FFB6C1 40%, #FFEAE2);
     color: black;
     padding-left: 5px;
     padding-right: 5px;
