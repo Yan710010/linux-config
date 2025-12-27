@@ -1,0 +1,4 @@
+[".config/nvim"]
+type = "git-repo"
+url = "https://codeberg.org/onion27/onion27-nvim-config.git"
+refreshPeriod = "168h"

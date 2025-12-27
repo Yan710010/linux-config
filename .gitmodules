@@ -1,3 +1,0 @@
-[submodule "private_dot_config/external_nvim"]
-	path = private_dot_config/external_nvim
-	url = https://codeberg.org/onion27/onion27-nvim-config.git
