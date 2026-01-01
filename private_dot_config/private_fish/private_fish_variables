@@ -1,47 +1,10 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export EDITOR:nvim
-SETUVAR --export PAGER:less
+SETUVAR --export PAGER:less\x20\x2dr
 SETUVAR --export VK_ICD_FILENAMES:/usr/share/vulkan/icd\x2ed/intel_icd\x2ex86_64\x2ejson
 SETUVAR --export WINEDEBUG:fixme\x2dall
-SETUVAR __fish_initialized:3800
-SETUVAR fish_color_autosuggestion:969896
-SETUVAR fish_color_cancel:\x2d\x2dreverse
-SETUVAR fish_color_command:ffd7d7
-SETUVAR fish_color_comment:d7d7d7
-SETUVAR fish_color_cwd:green
-SETUVAR fish_color_cwd_root:red
-SETUVAR fish_color_end:d0d0d0
-SETUVAR fish_color_error:cf5f7c
-SETUVAR fish_color_escape:00a6b2
-SETUVAR fish_color_history_current:\x2d\x2dbold
-SETUVAR fish_color_host:normal
-SETUVAR fish_color_host_remote:yellow
-SETUVAR fish_color_keyword:b294bb
-SETUVAR fish_color_normal:normal
-SETUVAR fish_color_operator:00a6b2
-SETUVAR fish_color_option:81a2be
-SETUVAR fish_color_param:d7ffff
-SETUVAR fish_color_quote:5fffaf
-SETUVAR fish_color_redirection:ffffaf
-SETUVAR fish_color_search_match:white\x1e\x2d\x2dbold\x1e\x2d\x2dbackground\x3dbrblack
-SETUVAR fish_color_selection:white\x1e\x2d\x2dbold\x1e\x2d\x2dbackground\x3dbrblack
-SETUVAR fish_color_status:red
-SETUVAR fish_color_user:brgreen
-SETUVAR fish_color_valid_path:\x2d\x2dunderline\x3dsingle
+SETUVAR __fish_initialized:4300
 SETUVAR fish_greeting:\x1d
 SETUVAR fish_key_bindings:fish_default_key_bindings
-SETUVAR fish_pager_color_background:\x1d
-SETUVAR fish_pager_color_completion:normal
-SETUVAR fish_pager_color_description:B3A06D
-SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline\x3dsingle
-SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbold\x1e\x2d\x2dbackground\x3dcyan
-SETUVAR fish_pager_color_secondary_background:\x1d
-SETUVAR fish_pager_color_secondary_completion:\x1d
-SETUVAR fish_pager_color_secondary_description:\x1d
-SETUVAR fish_pager_color_secondary_prefix:\x1d
-SETUVAR fish_pager_color_selected_background:\x2d\x2dbackground\x3dbrblack
-SETUVAR fish_pager_color_selected_completion:\x1d
-SETUVAR fish_pager_color_selected_description:\x1d
-SETUVAR fish_pager_color_selected_prefix:\x1d
 SETUVAR fish_user_paths:/home/yan/\x2elocal/bin
