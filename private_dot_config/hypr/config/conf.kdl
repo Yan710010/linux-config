@@ -69,4 +69,8 @@ bind {
 
 bind {submap workspace; key D; dispatcher "workspace, name:伊蕾娜可爱" $smr}
 bind {submap workspace; key O; dispatcher "workspace, name:osu!" $smr}
-
+// 切换工作区内的窗口
+bind {submap workspace; key H; dispatcher "movefocus, l"}
+bind {submap workspace; key L; dispatcher "movefocus, r"}
+bind {submap workspace; key K; dispatcher "movefocus, u"}
+bind {submap workspace; key J; dispatcher "movefocus, d"}
