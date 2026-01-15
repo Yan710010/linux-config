@@ -2,7 +2,7 @@ function fish_title
     # If we're connected via ssh, we print the hostname.
     set -l ssh
     set -q SSH_TTY
-    and set ssh "["(prompt_login | string sub -l 10 | string collect)"]"
+    and set ssh "[$USER@$hostname]"
     # An override for the current command is passed as the first parameter.
     # This is used by `fg` to show the true process name, among others.
     if set -q argv[1]
