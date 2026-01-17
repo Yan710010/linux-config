@@ -1,0 +1,29 @@
+[general]
+cpus = 32
+editor = "nvim"
+elevator = "/usr/bin/doas"
+language = "zh_CN"
+noconfirm = false
+
+[aur]
+build = "/home/yan/.cache/aura/builds"
+cache = "/home/yan/.cache/aura/cache"
+clones = "/home/yan/.cache/aura/packages"
+hashes = "/home/yan/.cache/aura/hashes"
+chroot = []
+ignores = []
+git = false
+hotedit = false
+shellcheck = false
+diff = false
+delmakedeps = false
+clean = false
+warn_unknowns = true
+nocheck = false
+skipdepcheck = false
+reverse = false
+
+[backups]
+snapshots = "/home/yan/.cache/aura/snapshots"
+automatic = true
+
