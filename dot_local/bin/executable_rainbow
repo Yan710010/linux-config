@@ -1,0 +1,53 @@
+#!/bin/zsh
+# Author 27Onion
+
+if ! command -v rustc &> /dev/null; then
+    echo "Install the fucking rust toolchain to proceed. " 1>&2
+    exit 1
+fi
+
+rustc - -o /tmp/a <<<'
+use std::process::Command;
+
+fn min3(a: f64, b: f64, c: f64) -> f64 {
+    a.min(b).min(c)
+}
+
+fn hue_to_rgb(h: f64) -> (u8, u8, u8) {
+    let kr = (5. + h * 6.) % 6.;
+    let kg = (3. + h * 6.) % 6.;
+    let kb = (1. + h * 6.) % 6.;
+
+    let r = 1. - min3(kr, 4. - kr, 1.).max(0.);
+    let g = 1. - min3(kg, 4. - kg, 1.).max(0.);
+    let b = 1. - min3(kb, 4. - kb, 1.).max(0.);
+
+    ((255. * r) as u8, (255. * g) as u8, (255. * b) as u8)
+}
+
+fn show_color(r: u8, g: u8, b: u8) {
+    let cmd = Command::new("hyprctl")
+        .arg("notify")
+        .arg("1")
+        .arg(format!("{}", 24 * 60 * 60 * 1000))
+        .arg(format!("rgb({:02x}{:02x}{:02x})", r, g, b))
+        .arg("fontsize:15 喵")
+        .spawn();
+    let Ok(mut cmd) = cmd else {
+        return
+    };
+    _ = cmd.wait();
+}
+
+fn main() {
+    const RUNS: usize = 30;
+    for i in 0..=RUNS {
+        let (r, g, b) = hue_to_rgb((i as f64) / RUNS as f64);
+        show_color(r, g, b);
+    }
+}
+'
+
+/tmp/a
+rm /tmp/a
+

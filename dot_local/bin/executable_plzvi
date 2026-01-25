@@ -1,0 +1,55 @@
+#!/usr/bin/bash
+
+temp_dir="/tmp/plzvi"
+
+# 检测参数
+if [[ $# -eq 0 ]];then
+    echo -e \
+        "Usage: plzvi <file>\nUsing nvim (not vi) with user's nvim config to modify file, \nthen copy it back to the specified path"
+    exit 1
+fi
+
+# 获取完整文件路径
+file=$(realpath $1)
+
+# 创建plzvi临时目录
+if [ ! -d $temp_dir ];then
+    echo "~/.plzvi/ not found, create now."
+    mkdir $temp_dir
+fi
+
+# 复制
+temp_file="${temp_dir}/$(basename $file)"
+if [[ -f $file ]];then
+    cp -v $file $temp_file
+else
+    echo "${file} not find. Type anykey to create file"
+    read
+fi
+
+# 编辑
+nvim $temp_file
+
+# 复制回原位
+echo "Copy ${temp_file} to ${file} now."
+while true;do
+    doas cp -v "$temp_file" "$1"
+    if [ $? -ne 0 ];then
+        echo "Failed, retry?"
+        read re
+        case "$re" in
+            ""|"y"|"Y")continue;;
+        esac
+    fi
+    break;
+done
+
+# 查询是否要清理缓存
+printf "Clear temp ? (0:no(default) 1:file 2:dir):"
+read re
+case $re in
+    1) rm "$temp_file" ;;
+    2) rm -r "$temp_dir" ;;
+    0|"") ;;
+    *) echo "\"bad input: ${re}\""
+esac

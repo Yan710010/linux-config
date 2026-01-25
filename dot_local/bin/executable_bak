@@ -1,0 +1,22 @@
+#!/bin/fish
+
+if test -z "$argv[1]"
+    # 输出用法
+    echo "bak : 备份/还原文件"
+    echo "用法:"
+    echo "bak <file>          将<file>重命名为<file>.bak"
+    echo "bak -u <file>.bak   将<file>.bak重命名为<file>"
+else if test "$argv[1]" = "-u"
+    # 检查是否是备份文件
+    set filename (realpath -s $argv[2])
+    if string match -q -i "*.bak" $filename
+        set new_filename (string sub -e -4 $filename)
+        mv $filename $new_filename
+    else
+        echo -e "$filename""\033[31m似乎不是一个备份文件? (不以.bak结尾)\x1b[0m"
+    end
+else
+    # 处理文件名
+    set filename (realpath -s $argv[1])
+    mv $filename "$filename.bak"
+end

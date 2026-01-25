@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+
+power_state_file="/sys/bus/pci/drivers/nvidia/0000:01:00.0/power_state"
+if [[ -f $power_state_file ]];then
+    cat $power_state_file
+else
+    echo "Nvidia GPU not find"
+fi
+
