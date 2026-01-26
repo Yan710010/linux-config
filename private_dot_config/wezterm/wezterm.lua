@@ -11,14 +11,14 @@ config.font = wezterm.font_with_fallback {
 }
 -- -->  >= != 连字测试 </>  <== ========>=<========= -------->-<--------
 -- 显式设置连字启用情况
--- config.harfbuzz_features = {'calt', '!ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'ss09', 'liga'}
+--config.harfbuzz_features = {'calt', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'ss09', 'liga'}
 -- (Maple Mono 默认就挺好的了)
 
-config.color_scheme = 'Horizon Dark (Gogh)'
+config.color_scheme = 'nightfox'
 config.colors = { scrollbar_thumb = '404040a0' }
 
 -- 定义窗口透明度
-local OPACITY = 0.85
+local OPACITY = 0.80
 config.window_background_opacity = OPACITY
 config.text_background_opacity = OPACITY
 
@@ -53,5 +53,11 @@ wezterm.on('change-opacity', function(window, pane)
     window:set_config_overrides(overrides)
     
 end)
+
+config.unix_domains = {
+  {
+    name = 'PRiSM',
+  },
+}
 
 return config
