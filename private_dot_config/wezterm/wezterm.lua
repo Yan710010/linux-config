@@ -1,6 +1,8 @@
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
+config.term = "wezterm"
+
 config.cursor_thickness = 2
 config.font_size = 11
 
@@ -54,6 +56,7 @@ wezterm.on('change-opacity', function(window, pane)
     
 end)
 
+-- 复用
 config.unix_domains = {
   {
     name = 'PRiSM',
