@@ -40,6 +40,16 @@ bind {
         "exec, [workspace name:osu!] osu-lazer" \
         "workspace, name:osu!"
 }
+bind {
+    submap run
+    modkey SHIFT
+    key O
+    once
+    dispatcher \
+        "exec, notify-send -i osu-lazer -u low -e -t 2500 -a osu_launcher 'osu!启动!'" \
+        "exec, [workspace name:osu!] nrun osu-lazer" \
+        "workspace, name:osu!"
+}
 
 // 切换工作区
 bind { modkey SUPER; key W; dispatcher "submap, workspace" }
