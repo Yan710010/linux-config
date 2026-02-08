@@ -3,7 +3,7 @@ tmpfile=/tmp/d
 # 用提供的参数运行kd
 for i in {0..10}
 do
-    kd $* 2>"$tmpfile"
+    kd "$@" 2>"$tmpfile"
     if [ ! -s "$tmpfile" ]; then
         exit
     fi
