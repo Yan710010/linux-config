@@ -9,7 +9,7 @@ config.font_size = 11
 -- config.front_end = "WebGpu"
 
 config.font = wezterm.font_with_fallback {
-    { family = "monospace"},
+    { family = "monospace", weight = 500},
 }
 -- -->  >= != 连字测试 </>  <== ========>=<========= -------->-<--------
 -- 显式设置连字启用情况
