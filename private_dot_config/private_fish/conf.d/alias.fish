@@ -18,5 +18,3 @@ abbr vim nvim
 
 # 你还怪礼貌的嘞
 alias plz "doas"
-
-alias clear="clear -x"
