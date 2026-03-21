@@ -64,11 +64,4 @@ wezterm.on('change-opacity', function(window, pane)
     
 end)
 
--- 复用
-config.unix_domains = {
-  {
-    name = 'PRiSM',
-  },
-}
-
 return config

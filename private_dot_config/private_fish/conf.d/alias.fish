@@ -1,11 +1,9 @@
 # 实用指令
-abbr ta 'tmux attach -t'
-abbr tn 'tmux new -s'
+abbr ta 'tmux new -As'
 abbr tl 'tmux list-sessions'
 
 abbr nmc 'nmcli connection'
 
-#alias yay=paru
 abbr disable-animation 'hyprctl keyword animations:enabled no'
 abbr p power-state
 alias ls 'eza --icons auto --time-style "+%Y/%m/%d %H:%M:%S"'
