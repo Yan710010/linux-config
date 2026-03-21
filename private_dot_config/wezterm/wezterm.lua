@@ -24,6 +24,14 @@ local OPACITY = 0.80
 config.window_background_opacity = OPACITY
 config.text_background_opacity = OPACITY
 
+-- 设置窗口边框
+config.window_padding = {
+  left = 5,
+  right = 5,
+  top = 2,
+  bottom = 2,
+}
+
 -- 在只有一个标签页时隐藏标签栏
 config.hide_tab_bar_if_only_one_tab = true
 config.use_fancy_tab_bar = false
