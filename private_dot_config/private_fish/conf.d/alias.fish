@@ -2,6 +2,8 @@
 abbr ta 'tmux new -As'
 abbr tl 'tmux list-sessions'
 
+abbr z zellij
+
 abbr nmc 'nmcli connection'
 
 abbr disable-animation 'hyprctl keyword animations:enabled no'
