@@ -8,7 +8,9 @@ abbr nmc 'nmcli connection'
 
 abbr disable-animation 'hyprctl keyword animations:enabled no'
 abbr p power-state
+
 alias ls 'eza --icons auto --time-style "+%Y/%m/%d %H:%M:%S"'
+alias lsn 'eza --icons auto --time-style "+%Y/%m/%d %H:%M:%S" -snew'
 
 abbr sp 'systemctl suspend'
 
