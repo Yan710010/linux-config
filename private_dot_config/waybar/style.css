@@ -95,6 +95,11 @@ menu, menuitem {
     background: white;
     color: green;
 }
+#battery.critical:not(.charging) {
+    background: white;
+    color: red;
+    animation: none;
+}
 
 #tray {
     background: rgba(167, 167, 167, 0.8);
