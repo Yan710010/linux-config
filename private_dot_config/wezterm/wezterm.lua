@@ -11,6 +11,12 @@ config.font_size = 11
 config.font = wezterm.font_with_fallback {
     { family = "monospace", weight = 500},
 }
+config.font_rules = {
+    {
+        intensity = "Bold",
+        font = wezterm.font("monospace", { weight = 800 }),
+    }
+}
 -- -->  >= != 连字测试 </>  <== ========>=<========= -------->-<--------
 -- 显式设置连字启用情况
 --config.harfbuzz_features = {'calt', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'ss09', 'liga'}
@@ -46,11 +52,12 @@ config.keys = {
     { key = 'UpArrow', mods = 'SHIFT', action = act.ScrollByLine(-1) },
     { key = 'DownArrow', mods = 'SHIFT', action = act.ScrollByLine(1) },
 
-    { key = "B", mods = "CTRL|SHIFT", action = act.EmitEvent('change-opacity')},
+    { key = "B", mods = "CTRL|SHIFT", action = act.EmitEvent('disable-opacity')},
+    { key = "T", mods = "CTRL|SHIFT", action = act.EmitEvent('toggle-transparent')},
 }
 
 -- 事件
-wezterm.on('change-opacity', function(window, pane)
+wezterm.on('disable-opacity', function(window, pane)
     -- 获取当前配置覆盖(如果没有就生成一个空表)
     local overrides = window:get_config_overrides() or {}
     -- 检查当前透明度覆盖情况
@@ -61,7 +68,18 @@ wezterm.on('change-opacity', function(window, pane)
     end
     -- 应用新的透明度
     window:set_config_overrides(overrides)
-    
+end)
+wezterm.on('toggle-transparent', function(window, pane)
+    -- 获取当前配置覆盖(如果没有就生成一个空表)
+    local overrides = window:get_config_overrides() or {}
+    -- 检查当前透明度覆盖情况
+    if overrides.window_background_opacity ~= 0.2 then
+        overrides.window_background_opacity = 0.2
+    else
+        overrides.window_background_opacity = OPACITY
+    end
+    -- 应用新的透明度
+    window:set_config_overrides(overrides)
 end)
 
 return config

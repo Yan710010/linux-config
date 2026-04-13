@@ -1,0 +1,20 @@
+#!/usr/bin/bash
+
+session_name="UPDATE"
+update_time="$(date +'%m.%d-%H:%M')"
+log_dir=$HOME/.cache/update-system/
+
+if [ ! -d "$log_dir" ]; then mkdir -p "$log_dir"; fi
+
+# 关闭死会话
+if zellij ls | rg -q "${session_name}.*EXITED"; then
+	zellij delete-session "$session_name"
+fi
+zellij attach -b "$session_name" &>/dev/null
+zellij --session "$session_name" run --stacked --close-on-exit --name "$update_time" \
+	-- script -B "${log_dir}/${update_time}.log" -c 'paru -Syu --noconfirm; echo "|===更新完成===|"; read'
+
+# 如果当前不在ZELLIJ会话中则连接到更新会话
+if [ -z "$ZELLIJ" ]; then
+	zellij attach "$session_name"
+fi
