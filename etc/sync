@@ -1,0 +1,27 @@
+#!/usr/bin/bash
+# 仍旧假设脚本运行位置是同步文件夹
+cd "$(dirname $0)"
+
+tracking_files=$(find -type f)
+diff_files=()
+for file in $tracking_files; do
+    if [ "$file" != "$0" ] && ! diff -q "$file" "/etc/$file"; then
+        diff_files+=($file)
+    fi
+done
+
+printf '查看差异?(Y/n):'
+read input
+if [ "$input" = "n" -o "$input" = 'N' ]; then exit; fi
+
+for file in $diff_files; do
+    echo "======$file======"
+    diff -u --color "$file" "/etc/${file}" | less -RF
+    echo -n "同步?(Y/n)"
+    read input
+    if ! [ "$input" = "n" -o "$input" = 'N' ]; then
+        cp "/etc/$file" $file -v
+    fi
+done
+
+
