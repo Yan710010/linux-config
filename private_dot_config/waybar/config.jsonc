@@ -19,9 +19,9 @@
         "pulseaudio",
         // "network",
         "backlight",
-        // "power-profiles-daemon",
         // "temperature",
         "battery",
+        // "power-profiles-daemon",
         "tray",
         // "custom/power"
         "custom/notification"
@@ -146,9 +146,10 @@
         },
         "format": "{power}W {capacity}% {icon}",
         "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}% 󰂄",
+        "format-charging": "{power}W {capacity}% 󰂄",
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
+        "interval": 2,
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
@@ -158,10 +159,8 @@
     },
     "power-profiles-daemon": {
       "format": "{icon}",
-      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-      "tooltip": true,
       "format-icons": {
-        "default": "",
+        "default": "󰥺",
         "performance": "",
         "balanced": "",
         "power-saver": ""
