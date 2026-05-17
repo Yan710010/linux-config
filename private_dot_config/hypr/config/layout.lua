@@ -22,3 +22,6 @@ hl.define_submap("workspace", function()
     hl.bind("comma", hl.dsp.layout("move +100"), { repeating = true })
     hl.bind("period", hl.dsp.layout("move -100"), { repeating = true })
 end)
+
+hl.bind("SUPER + minus", hl.dsp.layout("colresize -conf"), { repeating = true })
+hl.bind("SUPER + equal", hl.dsp.layout("colresize +conf"), { repeating = true })
