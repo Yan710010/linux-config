@@ -37,13 +37,19 @@ end
 local function switch_wallpaper()
     local next = next_wallpaper()
     if next then
-        hl.notification.create { text = next, duration = 2000, color = "rgb(f5a9b8)" }
         hl.exec_cmd("awww img " .. awww_opt .. " " .. wp_home .. '/' .. next)
+        local w = hl.get_active_window()
+        if not w or w.fullscreen == 0 then
+            hl.notification.create { text = next, duration = 3000, color = "rgb(f5a9b8)" }
+        end
     end
 end
 
 -- 定时切换
-hl.timer(switch_wallpaper, { timeout = 600 * 1000, type = "repeat" })
+local timer = hl.timer(switch_wallpaper, { timeout = 600 * 1000, type = "repeat" })
 
 -- 手动切换
-hl.bind("SUPER + G", switch_wallpaper)
+hl.bind("SUPER + G", function()
+    switch_wallpaper()
+    timer:set_enabled(true) -- 重置计时器
+end)
