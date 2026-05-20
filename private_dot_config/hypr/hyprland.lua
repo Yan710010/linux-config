@@ -32,7 +32,8 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("wl-paste --watch cliphist store")
     hl.exec_cmd("swayosd-server")
 
-
+    hl.exec_cmd("systemctl --user set-environment LANGUAGE=zh_CN")
+    hl.exec_cmd("systemctl --user set-environment LANG=zh_CN.UTF-8")
     hl.exec_cmd("echo Xft.dpi: 128 | xrdb")
 end)
 -- 额外的开机自启动软件
@@ -56,6 +57,8 @@ hl.env("LANGUAGE", "zh_CN")
 
 hl.env("AQ_DRM_DEVICES", "/dev/dri/card1:/dev/dri/card0")
 hl.env("VK_ICD_FILENAMES", "/usr/share/vulkan/icd.d/intel_icd.json")
+
+hl.env("TERMINAL", terminal)
 
 -----------------------
 ---- LOOK AND FEEL ----
@@ -233,6 +236,8 @@ hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + up", hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "down" }))
+
+hl.bind("ALT + TAB", hl.dsp.window.cycle_next())
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
