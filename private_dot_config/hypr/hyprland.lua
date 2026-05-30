@@ -283,13 +283,17 @@ hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true 
 hl.bind("switch:on:Lid Switch", hl.dsp.exec_cmd("hyprlock"), { locked = true })
 hl.bind("switch:off:Lid Switch", hl.dsp.dpms({ action = "on" }))
 hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd("hyprlock"))
--- 合盖熄屏
+-- 手动熄屏
+local function delay_dpms(action)
+    hl.timer(function() hl.dispatch(hl.dsp.dpms { action = action }) end,
+        { timeout = 200, type = "oneshot" })
+end
 hl.bind("SUPER + CTRL + L", function()
-    hl.dispatch(hl.dsp.dpms({ action = "off" }))
+    delay_dpms("off")
     hl.dispatch(hl.dsp.submap("dpms"))
 end)
 hl.define_submap("dpms", "reset", function()
-    hl.bind("catchall", hl.dsp.dpms({ action = "on" }))
+    hl.bind("catchall", function() delay_dpms("on") end)
 end)
 
 -- and more...
