@@ -286,14 +286,14 @@ hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd("hyprlock"))
 -- 手动熄屏
 local function delay_dpms(action)
     hl.timer(function() hl.dispatch(hl.dsp.dpms { action = action }) end,
-        { timeout = 200, type = "oneshot" })
+        { timeout = 100, type = "oneshot" })
 end
 hl.bind("SUPER + CTRL + L", function()
-    delay_dpms("off")
+    delay_dpms("disable")
     hl.dispatch(hl.dsp.submap("dpms"))
 end)
 hl.define_submap("dpms", "reset", function()
-    hl.bind("catchall", function() delay_dpms("on") end)
+    hl.bind("catchall", function() delay_dpms("enable") end)
 end)
 
 -- and more...
