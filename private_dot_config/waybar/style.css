@@ -101,6 +101,25 @@ menu, menuitem {
     animation: none;
 }
 
+#power-profiles-daemon {
+    margin-left: 1px;
+    margin-right: 1px;
+    padding-left: 1px;
+    padding-right: 1px;
+}
+#power-profiles-daemon.power-saver {
+    background: transparent;
+    color: green;
+}
+#power-profiles-daemon.balanced {
+    background: transparent;
+    color: white;
+}
+#power-profiles-daemon.performance {
+    background: transparent;
+    color: blue;
+}
+
 #tray {
     background: rgba(167, 167, 167, 0.8);
 }

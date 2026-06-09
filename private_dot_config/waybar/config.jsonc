@@ -21,7 +21,7 @@
         "backlight",
         // "temperature",
         "battery",
-        // "power-profiles-daemon",
+        "power-profiles-daemon",
         "tray",
         // "custom/power"
         "custom/notification"
@@ -161,9 +161,9 @@
       "format": "{icon}",
       "format-icons": {
         "default": "󰥺",
-        "performance": "",
-        "balanced": "",
-        "power-saver": ""
+        "performance": "",
+        "balanced": "",
+        "power-saver": ""
       }
     },
     "network": {
