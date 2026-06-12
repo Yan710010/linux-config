@@ -33,7 +33,7 @@ hl.bind("SUPER + N", hl.dsp.exec_cmd("swaync-client -t"))
 hl.bind("SUPER + W", hl.dsp.submap("workspace"))
 hl.define_submap("workspace", "reset", function()
     hl.bind("ESCAPE", hl.dsp.submap("reset"), ignore_mods)
-    hl.bind("W", hl.dsp.submap("reset"))
+    hl.bind("W", hl.dsp.submap("reset"), ignore_mods)
     -- 指定的几个工作区
     hl.bind("D", hl.dsp.focus { workspace = "name:桌面" }, ignore_mods)
     hl.bind("O", hl.dsp.focus { workspace = "name:osu!" }, ignore_mods)
