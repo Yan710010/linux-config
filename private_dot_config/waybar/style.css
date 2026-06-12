@@ -6,7 +6,7 @@
     /* margin-top: 2px; */
     /* margin-bottom: 2px; */
     font-family: "serif";
-    font-size: 13;
+    font-size: 13px;
 }
 
 window#waybar {
@@ -31,9 +31,9 @@ menu, menuitem {
 }
 
 #submap {
-    background: linear-gradient(to bottom right, #1f1e33);
+    background: #1f1e33;
     color: #EFB3E0;
-    font-size: 14;
+    font-size: 14px;
     font-weight: bold;
     padding-right: 5px;
     padding-left: 5px;
@@ -101,22 +101,23 @@ menu, menuitem {
     animation: none;
 }
 
-#power-profiles-daemon {
-    margin-left: 1px;
-    margin-right: 1px;
-    padding-left: 1px;
-    padding-right: 1px;
+#power-profiles-daemon.power-saver,
+#power-profiles-daemon.balanced,
+#power-profiles-daemon.performance {
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 5px;
+    background: #CCC2BB;
 }
 #power-profiles-daemon.power-saver {
-    background: transparent;
     color: green;
 }
 #power-profiles-daemon.balanced {
-    background: transparent;
-    color: white;
+    color: transparent;
 }
 #power-profiles-daemon.performance {
-    background: transparent;
     color: blue;
 }
 
