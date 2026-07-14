@@ -1,0 +1,5 @@
+prompt=请输入文本
+allow_images=true
+term=wezterm
+matching=contains
+insensitive=true

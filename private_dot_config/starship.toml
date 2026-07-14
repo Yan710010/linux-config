@@ -34,7 +34,7 @@ ssh_only = true
 [directory]
 style = "#FFD9ED"
 truncation_symbol = "…/"
-truncation_length = 6
+truncation_length = 3
 read_only = ' -'
 #fish_style_pwd_dir_length = 3
 

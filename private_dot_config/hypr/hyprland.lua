@@ -279,15 +279,15 @@ hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = tr
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
 
--- 合盖锁屏
-hl.bind("switch:on:Lid Switch", hl.dsp.exec_cmd("hyprlock"), { locked = true })
-hl.bind("switch:off:Lid Switch", hl.dsp.dpms({ action = "on" }))
-hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd("hyprlock"))
--- 手动熄屏
 local function delay_dpms(action)
     hl.timer(function() hl.dispatch(hl.dsp.dpms { action = action }) end,
         { timeout = 100, type = "oneshot" })
 end
+-- 合盖锁屏
+hl.bind("switch:on:Lid Switch", hl.dsp.exec_cmd("hyprlock"), { locked = true })
+hl.bind("switch:off:Lid Switch", function() delay_dpms("enable") end)
+hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd("hyprlock"))
+-- 手动熄屏
 hl.bind("SUPER + CTRL + L", function()
     delay_dpms("disable")
     hl.dispatch(hl.dsp.submap("dpms"))

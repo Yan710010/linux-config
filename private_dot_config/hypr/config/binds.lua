@@ -1,6 +1,6 @@
 -- 常用程序
 local fileManager = "dolphin"
-local webBroser = "firefox"
+local webBroser = "zen-browser"
 local mailManager = "thunderbird"
 
 -- 程序启动器
@@ -8,8 +8,8 @@ local ignore_mods = { ignore_mods = true }
 
 hl.bind("SUPER + R", hl.dsp.submap("run"))
 hl.define_submap("run", "reset", function()
-    hl.bind("D", hl.dsp.exec_cmd("rofi -show drun"), ignore_mods)
-    hl.bind("R", hl.dsp.exec_cmd("rofi -show run"))
+    hl.bind("D", hl.dsp.exec_cmd("wofi --show drun"), ignore_mods)
+    hl.bind("R", hl.dsp.exec_cmd("wofi --show run"))
     hl.bind("ESCAPE", hl.dsp.submap("reset"), ignore_mods)
 
     hl.bind("E", hl.dsp.exec_cmd(fileManager), ignore_mods)
@@ -47,3 +47,4 @@ hl.define_submap("workspace", function()
     hl.bind("Q", hl.dsp.focus { workspace = "e-1" }, ignore_mods)
     hl.bind("E", hl.dsp.focus { workspace = "e+1" }, ignore_mods)
 end)
+
