@@ -1,0 +1,118 @@
+#!/bin/bash
+# 在此感谢Deepseek的帮助，本人不太会写shell脚本
+# 27Onion 于 2025-08-17 00:50:04: 哇居然是用水印提示。我可能会想写个waybar组件喵。
+# Yan 于 2025-08-17 01:14:57 : 因为, 写这个的时候还在用KDE, 没有waybar (
+# Yan 于 2025-09-26 21:32:30 : 重写了下文案
+
+echo '弃用, 请使用`checkupdates`和`paru -Qua`'
+exit 1
+
+
+# 如果有tmux 的话就给塞tmux里面
+tmux_session_name="check-update-script"
+# 检测tmux是否可用
+if which tmux>/dev/null;then
+    # 检测是否正在tmux会话中
+    if [[ ! -v TMUX ]];then
+        tmux new -s "$tmux_session_name" "${0@Q} ${*@Q}"
+        exit
+    elif [[ ! $(tmux display-message -p "#S") = "$tmux_session_name" ]];then
+        echo "正在tmux会话中，后台新建会话..."
+        tmux new-session -s "$tmux_session_name" -d "${0@Q} ${*@Q}"
+        echo "切换"
+        tmux switch-client -t "$tmux_session_name"
+        exit
+    fi
+fi
+
+# 更新检查时间
+check_time=10m
+
+# 手动加一下LANG
+LANG=zh_CN.UTF-8
+
+# 需要特殊判断的软件包, 越靠前越优先
+important_package="linux systemd nvidia-open hyprland kitty"
+# 对于重要软件包的提示文本
+declare -A IP_title=(
+    ["linux"]="内核更新"
+    ["nvidia-open"]="更新显卡驱动"
+    ["systemd"]="先别激活你那Linux了"
+    ["hyprland"]="Hyprland更新啦"
+    ["kitty"]="你家猫猫更新啦"
+)
+declare -A IP_message=(
+    ["linux"]="请转到pacman -Syu以进行更新"
+    ["nvidia-open"]='希望不要滚挂...?'
+    ["systemd"]="systemd更新了喵"
+    ["hyprland"]="快滚快滚"
+    ["kitty"]="快去更新kitty喵"
+)
+
+# 进入循环
+while true; do
+    printf "\n\n\n"
+    date 
+    echo "开始同步"
+    # 显示更新时水印
+    [ -n "$activate_linux_pid" ] && kill $activate_linux_pid
+    activate-linux --text-title "激活Archlinux" --text-message "正在同步数据库..." --overlay-width 360 --overlay-height 160 -f "LXGW WenKai" &
+    activate_linux_pid=$!
+    # 同步数据库
+    # 在 /etc/doas.conf 里配置了对于 "pacman -Sy" 命令的免密
+    #doas pacman -Sy
+    # 使用paru进行检查 获取需要更新的包
+    echo "获取需要更新的包"
+    packages="$(checkupdates)$(paru -Qua)"
+    printf "需更新的包:\n${packages}\n"
+    text_color="1-1-1-0.35"
+    # 首先判断有没有急须更新的包
+    has_important=false
+    for package in $important_package;do
+        if echo "$packages" | rg -wq "$package"; then
+            echo "找到重要软件包: ${package}"
+            has_important=true
+            text_title=${IP_title["${package}"]}
+            text_message=${IP_message["${package}"]}
+            break
+        fi
+    done
+
+    # 如果没有特殊软件包则判断数量
+    # 27Onion 于 2025-08-17 00:47:58: 似曾相识……那个“柒佰拾零”是你？
+    if ! $has_important ;then
+        # 获取数量
+        echo "未找到重要软件包，统计数量..."
+        updates=$(wc -w <<< "$packages")
+        echo "共有${updates}个软件包需要更新"
+        # 判断数量
+        if [ "$updates" -le 0 ]; then
+            text_title="激活Archlinux"
+	    # 27Onion 于 2025-08-17 00:49:00: 就是啊。
+            text_message='等下Arch为什么要激活'
+        elif [ "$updates" -le 10 ]; then
+            text_title="激活Archlinux"
+            text_message="转到 paru -Syu 以激活Archlinux"
+        elif [ "$updates" -le 40 ]; then
+            text_title="更新Archlinux"
+            text_message="有""$updates""个软件包需要更新"
+            text_color="1-1-1-0.6"
+        elif [ "$updates" -le 100 ]; then
+            text_title="快滚"
+            text_message="攒了""$updates""个软件包你是等着过年吗"
+            text_color="1-0-0-0.6"
+        else
+            text_title="滚呐!"
+            text_message="喵的攒了一百多个包没滚你赶紧麻溜的给我滚呐!"
+            text_color="1-0-0-1"
+        fi
+    fi
+    # 更新activate-linux显示
+    [ -n "$activate_linux_pid" ] && kill $activate_linux_pid
+    activate-linux --text-title "$text_title" --text-message "$text_message" --overlay-width 360 --overlay-height 160 --text-color $text_color -f "LXGW WenKai" &
+    activate_linux_pid=$!
+    echo "水印创建完成，休眠${check_time}"
+
+    # 延时
+    sleep $check_time
+done

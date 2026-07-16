@@ -1,0 +1,18 @@
+#!/usr/bin/fish
+set ending 0
+while true
+    read r
+        if [ -z "$r" ]
+            if [ "$ending" -ne 1 ]
+                echo "输入ENDSAY或再次输入空白行结束"
+                set ending 1
+            else
+                break
+            end
+        else if [ "$r" = "ENDSAY" ]
+            break
+        else
+            echo "$r" | wl-copy
+            set ending 0
+        end
+end
