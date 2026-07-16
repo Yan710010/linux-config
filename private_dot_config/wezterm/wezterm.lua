@@ -44,16 +44,26 @@ config.use_fancy_tab_bar = false
 
 -- 启用滚动条
 config.enable_scroll_bar = true
--- 设置单次翻页距离为半页
+
 local act = wezterm.action
 config.keys = {
-    { key = 'PageUp', mods = "SHIFT", action = act.ScrollByPage(-0.5) },
-    { key = 'PageDown', mods = "SHIFT", action = act.ScrollByPage(0.5) },
     { key = 'UpArrow', mods = 'SHIFT', action = act.ScrollByLine(-1) },
     { key = 'DownArrow', mods = 'SHIFT', action = act.ScrollByLine(1) },
 
     { key = "B", mods = "CTRL|SHIFT", action = act.EmitEvent('disable-opacity')},
     { key = "T", mods = "CTRL|SHIFT", action = act.EmitEvent('toggle-transparent')},
+}
+config.mouse_bindings = {
+  {
+    event = { Down = { streak = 1, button = { WheelUp = 1 } } },
+    mods = 'NONE',
+    action = act.ScrollByLine(-5),
+  },
+  {
+    event = { Down = { streak = 1, button = { WheelDown = 1 } } },
+    mods = 'NONE',
+    action = act.ScrollByLine(5),
+  },
 }
 
 -- 事件
