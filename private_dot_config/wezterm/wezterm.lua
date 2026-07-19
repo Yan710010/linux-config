@@ -9,13 +9,13 @@ config.font_size = 11
 -- config.front_end = "WebGpu"
 
 config.font = wezterm.font_with_fallback {
-    { family = "monospace", weight = 500},
+  { family = "monospace", weight = 500 },
 }
 config.font_rules = {
-    {
-        intensity = "Bold",
-        font = wezterm.font("monospace", { weight = 800 }),
-    }
+  {
+    intensity = "Bold",
+    font = wezterm.font("monospace", { weight = 800 }),
+  }
 }
 -- -->  >= != 连字测试 </>  <== ========>=<========= -------->-<--------
 -- 显式设置连字启用情况
@@ -47,11 +47,18 @@ config.enable_scroll_bar = true
 
 local act = wezterm.action
 config.keys = {
-    { key = 'UpArrow', mods = 'SHIFT', action = act.ScrollByLine(-1) },
-    { key = 'DownArrow', mods = 'SHIFT', action = act.ScrollByLine(1) },
+  { key = 'UpArrow',   mods = 'SHIFT',      action = act.ScrollByLine(-1) },
+  { key = 'DownArrow', mods = 'SHIFT',      action = act.ScrollByLine(1) },
 
-    { key = "B", mods = "CTRL|SHIFT", action = act.EmitEvent('disable-opacity')},
-    { key = "T", mods = "CTRL|SHIFT", action = act.EmitEvent('toggle-transparent')},
+  { key = "B",         mods = "CTRL|SHIFT", action = act.EmitEvent('disable-opacity') },
+  { key = "T",         mods = "CTRL|SHIFT", action = act.EmitEvent('toggle-transparent') },
+
+  -- 取消设置部分默认按键绑定
+  { mods = "CTRL",     key = "-",           action = act.DisableDefaultAssignment },
+  { mods = "CTRL",     key = "=",           action = act.DisableDefaultAssignment },
+  { mods = "SUPER",    key = "-",           action = act.DisableDefaultAssignment },
+  { mods = "SUPER",    key = "=",           action = act.DisableDefaultAssignment },
+  { mods = "ALT",      key = "Enter",       action = act.DisableDefaultAssignment },
 }
 config.mouse_bindings = {
   {
@@ -68,28 +75,28 @@ config.mouse_bindings = {
 
 -- 事件
 wezterm.on('disable-opacity', function(window, pane)
-    -- 获取当前配置覆盖(如果没有就生成一个空表)
-    local overrides = window:get_config_overrides() or {}
-    -- 检查当前透明度覆盖情况
-    if overrides.window_background_opacity ~= 1 then
-        overrides.window_background_opacity = 1
-    else
-        overrides.window_background_opacity = OPACITY
-    end
-    -- 应用新的透明度
-    window:set_config_overrides(overrides)
+  -- 获取当前配置覆盖(如果没有就生成一个空表)
+  local overrides = window:get_config_overrides() or {}
+  -- 检查当前透明度覆盖情况
+  if overrides.window_background_opacity ~= 1 then
+    overrides.window_background_opacity = 1
+  else
+    overrides.window_background_opacity = OPACITY
+  end
+  -- 应用新的透明度
+  window:set_config_overrides(overrides)
 end)
 wezterm.on('toggle-transparent', function(window, pane)
-    -- 获取当前配置覆盖(如果没有就生成一个空表)
-    local overrides = window:get_config_overrides() or {}
-    -- 检查当前透明度覆盖情况
-    if overrides.window_background_opacity ~= 0.2 then
-        overrides.window_background_opacity = 0.2
-    else
-        overrides.window_background_opacity = OPACITY
-    end
-    -- 应用新的透明度
-    window:set_config_overrides(overrides)
+  -- 获取当前配置覆盖(如果没有就生成一个空表)
+  local overrides = window:get_config_overrides() or {}
+  -- 检查当前透明度覆盖情况
+  if overrides.window_background_opacity ~= 0.2 then
+    overrides.window_background_opacity = 0.2
+  else
+    overrides.window_background_opacity = OPACITY
+  end
+  -- 应用新的透明度
+  window:set_config_overrides(overrides)
 end)
 
 return config
