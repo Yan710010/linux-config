@@ -38,10 +38,10 @@ local function switch_wallpaper()
     local next = next_wallpaper()
     if next then
         hl.exec_cmd("awww img " .. awww_opt .. " " .. wp_home .. '/' .. next)
-        local w = hl.get_active_window()
-        if not w or w.fullscreen == 0 then
-            hl.notification.create { text = next, duration = 3000, color = "rgb(f5a9b8)" }
-        end
+        -- local w = hl.get_active_window()
+        -- if not w or w.fullscreen == 0 then
+        --     hl.notification.create { text = next, duration = 3000, color = "rgb(f5a9b8)" }
+        -- end
     end
 end
 
