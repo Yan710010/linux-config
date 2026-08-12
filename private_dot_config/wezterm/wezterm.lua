@@ -8,6 +8,7 @@ config.font_size = 11
 
 -- config.front_end = "WebGpu"
 
+config.custom_block_glyphs = false
 config.font = wezterm.font_with_fallback {
   { family = "monospace", weight = 500 },
 }
