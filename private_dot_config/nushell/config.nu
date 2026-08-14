@@ -19,7 +19,7 @@
 #     config nu --doc | nu-highlight | less -R
 
 # 禁用提示
-$env.config.show_banner = false
+$env.config.show_banner = true
 
 # 使用vi按键模式
 # 不使用vi按键模式
@@ -36,4 +36,5 @@ $env.config.show_banner = false
 $env.GPG_TTY = (^tty)
 
 # 导入 ~/.local/share/nushell/completions/ 中的补全
-use completions.nu *
+# 但是这玩意怎么能卡我100ms
+# use completions.nu *

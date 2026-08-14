@@ -5,7 +5,7 @@ $env.config.completions.external = {
   enable: true
   completer: {|spans|
     # 是的前文明的人这样检测补全调用频率
-    ^notify-send -e 哈哈我补全了
+    #^notify-send -e 哈哈我补全了
     fish --command $"complete '--do-complete=($spans | str replace --all "'" "\\'" | str join ' ')'"
     | from tsv --flexible --noheaders --no-infer
     | rename value description
