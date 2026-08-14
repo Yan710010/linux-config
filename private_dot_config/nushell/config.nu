@@ -19,7 +19,7 @@
 #     config nu --doc | nu-highlight | less -R
 
 # 禁用提示
-$env.config.show_banner = true
+$env.config.show_banner = false
 
 # 使用vi按键模式
 # 不使用vi按键模式
