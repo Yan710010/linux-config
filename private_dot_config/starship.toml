@@ -16,6 +16,9 @@ $status\
 $jobs\
 $character"""
 
+# 在提示符之间插入空行
+add_newline = true
+
 [time]
 disabled = false
 format = '[\[[$time]($style)\] ](white)'
@@ -35,7 +38,10 @@ ssh_only = true
 style = "#FFD9ED"
 truncation_symbol = "…/"
 truncation_length = 3
+truncate_to_repo = false
 read_only = ' -'
+before_repo_root_style = "#D1D9E0"
+repo_root_style = "#FFD9ED"
 #fish_style_pwd_dir_length = 3
 
 [character]
