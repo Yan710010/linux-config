@@ -8,8 +8,8 @@ local ignore_mods = { ignore_mods = true }
 
 hl.bind("SUPER + R", hl.dsp.submap("run"))
 hl.define_submap("run", "reset", function()
-    hl.bind("D", hl.dsp.exec_cmd("wofi --show drun"), ignore_mods)
-    hl.bind("R", hl.dsp.exec_cmd("wofi --show run"))
+    -- hl.bind("D", hl.dsp.exec_cmd("wofi --show drun"), ignore_mods)
+    -- hl.bind("R", hl.dsp.exec_cmd("wofi --show run"))
     hl.bind("ESCAPE", hl.dsp.submap("reset"), ignore_mods)
 
     hl.bind("E", hl.dsp.exec_cmd(fileManager), ignore_mods)

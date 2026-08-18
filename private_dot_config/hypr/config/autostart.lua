@@ -7,7 +7,7 @@ hl.on("hyprland.start", function()
     -- 视奸提醒
     hl.exec_cmd("pgrep ssh-notifier || ssh-notifier")
     -- 屏幕使用时间记录……？
-    hl.exec_cmd("hyprscreentime daemon")
+    --hl.exec_cmd("hyprscreentime daemon")
 
     hl.exec_cmd("wezterm", { workspace = 1 })
     hl.exec_cmd("zen-browser", { workspace = "2 silent" })
