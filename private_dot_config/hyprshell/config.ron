@@ -13,7 +13,7 @@
                 show_when_empty: true,
                 plugins: (
                     applications: (
-                        run_cache_weeks: 8,
+                        run_cache_weeks: 2,
                         show_execs: true,
                         show_actions_submenu: true,
                     ),

@@ -15,7 +15,7 @@ hl.monitor({
 ---------------------
 
 -- Set programs that you use
-local terminal = "wezterm"
+Terminal = "wezterm"
 
 -------------------
 ---- AUTOSTART ----
@@ -28,12 +28,9 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("nm-applet")
     hl.exec_cmd("fcitx5 -d -r")
     hl.exec_cmd("waybar")
-    hl.exec_cmd("systemctl --user start swaync.service")
     hl.exec_cmd("wl-paste --watch cliphist store")
     hl.exec_cmd("swayosd-server")
 
-    hl.exec_cmd("systemctl --user set-environment LANGUAGE=zh_CN")
-    hl.exec_cmd("systemctl --user set-environment LANG=zh_CN.UTF-8")
     hl.exec_cmd("echo Xft.dpi: 128 | xrdb")
 end)
 -- 额外的开机自启动软件
@@ -42,23 +39,8 @@ require("config.autostart")
 -- 壁纸
 require("config.wallpaper")
 
-
--------------------------------
----- ENVIRONMENT VARIABLES ----
--------------------------------
-
--- https://wiki.hypr.land/Configuring/Advanced-and-Cool/Environment-variables/
-
-hl.env("XCURSOR_SIZE", "24")
-hl.env("HYPRCURSOR_SIZE", "24")
-
-hl.env("LANG", "zh_CN.UTF-8")
-hl.env("LANGUAGE", "zh_CN")
-
-hl.env("AQ_DRM_DEVICES", "/dev/dri/card1:/dev/dri/card0")
-hl.env("VK_ICD_FILENAMES", "/usr/share/vulkan/icd.d/intel_icd.json")
-
-hl.env("TERMINAL", terminal)
+-- 关于系统环境的设置
+require('config.environment')
 
 -----------------------
 ---- LOOK AND FEEL ----
@@ -222,7 +204,7 @@ local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 -- 整体管理
-hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exec_cmd(Terminal))
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
 hl.bind(mainMod .. " + SHIFT + C", hl.dsp.window.kill())
 hl.bind(mainMod .. " + SHIFT + M",
