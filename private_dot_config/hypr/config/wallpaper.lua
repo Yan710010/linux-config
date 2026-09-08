@@ -5,22 +5,23 @@ hl.on("hyprland.start", function()
 end)
 
 -- 指定壁纸文件夹
-local wp_home = "~/Pictures/wallpapers"
+local wp_home = os.getenv("HOME") .. "/Pictures/wallpapers"
 local wp_list = {}
 local wp_ptr = 1
 
 -- awww 的壁纸切换参数
-local awww_opt = "--transition-type wipe --transition-fps 60 --transition-angle 30 --transition-duration 2"
+local awww_opt = "--transition-type simple --transition-fps 30 --transition-step 25"
 
 -- 轮选壁纸
 local function next_wallpaper()
-    if wp_ptr + 1 >= #wp_list then
-        local handle = io.popen("ls " .. wp_home .. " | shuf")
+    if wp_ptr + 1 > #wp_list then
+        local handle = io.popen("ls -1 " .. wp_home .. " | shuf")
         local new_wp_list = {}
         if handle then
             for file in handle:lines() do
                 table.insert(new_wp_list, file)
             end
+            handle:close()
         end
         -- 如果第一张与最后一张相同则删去
         if new_wp_list[1] == wp_list[#wp_list] then
@@ -37,7 +38,7 @@ end
 local function switch_wallpaper()
     local next = next_wallpaper()
     if next then
-        hl.exec_cmd("awww img " .. awww_opt .. " " .. wp_home .. '/' .. next)
+        hl.exec_cmd(string.format("awww img %s '%s/%s'", awww_opt, wp_home, next))
         -- local w = hl.get_active_window()
         -- if not w or w.fullscreen == 0 then
         --     hl.notification.create { text = next, duration = 3000, color = "rgb(f5a9b8)" }
