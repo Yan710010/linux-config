@@ -37,6 +37,12 @@ hl.define_submap("workspace", "reset", function()
     -- 指定的几个工作区
     hl.bind("D", hl.dsp.focus { workspace = "name:桌面" }, ignore_mods)
     hl.bind("O", hl.dsp.focus { workspace = "name:osu!" }, ignore_mods)
+
+    -- 在当前显示器中展示目标工作区
+    for i = 1, 10 do
+        local key = i % 10 -- 10 maps to key 0
+        hl.bind("" .. key, hl.dsp.focus { workspace = i, on_current_monitor = true })
+    end
 end)
 hl.define_submap("workspace", function()
     hl.bind("H", hl.dsp.layout("focus l"))
@@ -47,4 +53,3 @@ hl.define_submap("workspace", function()
     hl.bind("Q", hl.dsp.focus { workspace = "e-1" }, ignore_mods)
     hl.bind("E", hl.dsp.focus { workspace = "e+1" }, ignore_mods)
 end)
-
