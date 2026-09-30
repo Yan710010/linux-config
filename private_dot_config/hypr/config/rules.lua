@@ -13,3 +13,14 @@ hl.window_rule({
     match = { class = "QQ", title = "negative:(图片查看器|视频播放器)" },
     opacity = 0.9,
 })
+
+hl.window_rule {
+    name = "osu! pointer lock",
+    match = { class = "osu!" },
+    confine_pointer = true,
+}
+hl.window_rule {
+    name = "Minecraft pointer lock",
+    match = { class = "Minecraft\\*" },
+    confine_pointer = true,
+}
