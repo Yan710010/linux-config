@@ -7,14 +7,14 @@ hl.monitor {
     output   = "eDP-1",
     mode     = "2560x1600@240",
     position = "0x0",
-    scale    = "1.6",
+    scale    = 1.6,
 }
 
 hl.monitor {
     output = "DP-1",
     mode = "2560x1440@240",
     position = "auto-center-left",
-    scale = "1.07",
+    scale = 1,
 }
 
 ---------------------
@@ -87,7 +87,7 @@ hl.config({
             enabled      = true,
             range        = 4,
             render_power = 3,
-            color        = 0xee1a1a1a,
+            color        = "0xee1a1a1a",
         },
 
         blur             = {
