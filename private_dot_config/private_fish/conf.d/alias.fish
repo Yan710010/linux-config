@@ -3,12 +3,11 @@ abbr ta 'tmux new -As'
 abbr tl 'tmux list-sessions'
 
 abbr z zellij
+abbr t tmux
 
 abbr nmc 'nmcli connection'
 
-abbr disable-animation 'hyprctl keyword animations:enabled no'
 abbr p power-state
-abbr u update-system
 
 alias ls 'eza --icons auto --time-style "+%Y/%m/%d %H:%M:%S"'
 alias lsn 'eza --icons auto --time-style "+%Y/%m/%d %H:%M:%S" -snew'
