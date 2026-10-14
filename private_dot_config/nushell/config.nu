@@ -30,8 +30,6 @@ $env.config.show_banner = false
 # 不能动态source还是有点坏
 ^zoxide init nushell --cmd c
 | save -f ( $nu.user-autoload-dirs | first | path join 'zoxide.init.nu' )
-^starship init nu
-| save -f ( $nu.user-autoload-dirs | first | path join 'starship.init.nu' )
 
 $env.GPG_TTY = (^tty)
 
