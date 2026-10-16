@@ -13,9 +13,9 @@ hl.env("TERMINAL", Terminal)
 
 hl.on("hyprland.start", function()
     hl.exec_cmd('dbus-update-activation-environment --systemd --all')
-    hl.exec_cmd("systemctl --user start hyprland-session.target")
+    hl.exec_cmd("systemctl --user start hyprland-session-custom.target")
 end)
 
 hl.on("hyprland.shutdown", function()
-    os.execute("systemctl --user stop hyprland-session.target && sleep 0.1")
+    os.execute("systemctl --user stop hyprland-session-custom.target && sleep 0.1")
 end)
