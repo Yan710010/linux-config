@@ -22,7 +22,7 @@ hl.monitor {
 ---------------------
 
 -- Set programs that you use
-Terminal = "wezterm"
+Terminal = "kitty"
 
 -------------------
 ---- AUTOSTART ----

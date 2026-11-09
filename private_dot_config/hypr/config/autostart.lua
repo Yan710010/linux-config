@@ -9,11 +9,11 @@ hl.on("hyprland.start", function()
     -- 屏幕使用时间记录……？
     --hl.exec_cmd("hyprscreentime daemon")
 
-    hl.exec_cmd("wezterm", { workspace = 1 })
+    hl.exec_cmd(Terminal, { workspace = 1 })
     hl.exec_cmd("zen-browser", { workspace = "2 silent" })
     --hl.exec_cmd("qq", { workspace = "3 silent", float = true })
     hl.exec_cmd("Telegram", { workspace = "3 silent" })
 
     -- 常驻悬浮终端
-    hl.exec_cmd("wezterm", { workspace = "special:arcaea silent", pseudo = true })
+    hl.exec_cmd(Terminal, { workspace = "special:arcaea silent" })
 end)
