@@ -52,7 +52,7 @@ config.keys = {
   { key = 'DownArrow', mods = 'SHIFT',      action = act.ScrollByLine(1) },
 
   { key = "B",         mods = "CTRL|SHIFT", action = act.EmitEvent('disable-opacity') },
-  { key = "T",         mods = "CTRL|SHIFT", action = act.EmitEvent('toggle-transparent') },
+  { key = "E",         mods = "CTRL|SHIFT", action = act.EmitEvent('toggle-transparent') },
 
   -- 取消设置部分默认按键绑定
   { mods = "CTRL",     key = "-",           action = act.DisableDefaultAssignment },
