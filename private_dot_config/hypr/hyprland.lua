@@ -280,7 +280,7 @@ hl.bind("SUPER + CTRL + L", function()
     hl.dispatch(hl.dsp.submap("dpms"))
 end)
 hl.define_submap("dpms", "reset", function()
-    hl.bind("catchall", function() delay_dpms("enable") end)
+    hl.bind("catchall", function() delay_dpms("enable") end, { ignore_mods = true })
 end)
 
 -- and more...
