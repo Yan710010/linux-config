@@ -27,7 +27,9 @@ end)
 hl.bind("SUPER + V",
     hl.dsp.exec_cmd("cliphist list | rofi -dmenu -p Clip -display-columns 2 | cliphist decode | wl-copy"))
 -- 消息记录
-hl.bind("SUPER + N", hl.dsp.exec_cmd("swaync-client -t"))
+hl.bind("SUPER + N", hl.dsp.exec_cmd("swaync-client --toggle-panel"))
+-- 快速切换免打扰
+hl.bind("SUPER + SHIFT + N", hl.dsp.exec_cmd("swaync-client --toggle-dnd"))
 
 -- 工作区切换
 hl.bind("SUPER + W", hl.dsp.submap("workspace"))
