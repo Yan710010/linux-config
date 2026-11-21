@@ -35,7 +35,20 @@ local function next_wallpaper()
     return wp_list[wp_ptr]
 end
 
+-- @returns boolean 现在是否可以触发壁纸切换
+local function check()
+    local active_window = hl.get_active_window()
+    if active_window then
+        if string.match(active_window.title, "osu") then
+            return false
+        end
+    end
+    return true
+end
+
 local function switch_wallpaper()
+    -- 检查现在是否应该切换壁纸
+    if not check() then return end
     local next = next_wallpaper()
     if next then
         hl.exec_cmd(string.format("awww img %s '%s/%s'", awww_opt, wp_home, next))
