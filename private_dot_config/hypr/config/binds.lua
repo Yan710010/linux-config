@@ -19,7 +19,7 @@ hl.define_submap("run", "reset", function()
     hl.bind("O", function()
         hl.dispatch(hl.dsp.focus({ workspace = "name:osu!" }))
         hl.exec_cmd("notify-send -i osu-lazer -u low -e -t 2500 -a osu_launcher osu!启动!")
-        hl.exec_cmd("gamemoderun nrun osu-lazer", { workspace = "name:osu! silent" })
+        hl.exec_cmd("grun osu-lazer", { workspace = "name:osu! silent" })
     end)
 end)
 

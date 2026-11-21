@@ -7,6 +7,8 @@ hl.env("LANGUAGE", "zh_CN")
 
 hl.env("AQ_DRM_DEVICES", "/dev/dri/card1:/dev/dri/card0")
 hl.env("VK_ICD_FILENAMES", "/usr/share/vulkan/icd.d/intel_icd.json")
+hl.env("__EGL_VENDOR_LIBRARY_FILENAMES", "/usr/share/glvnd/egl_vendor.d/50_mesa.json")
+hl.env("__GLX_VENDOR_LIBRARY_NAME", "mesa")
 
 hl.env("TERMINAL", Terminal)
 
