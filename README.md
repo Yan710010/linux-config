@@ -5,6 +5,7 @@
 <summary>部分软件列表</summary>
 
 - [hyprland](./private_dot_config/hypr/)
+- [kitty](./private_dot_config/kitty/)
 - [wezterm](./private_dot_config/wezterm/)
 - [fish](./private_dot_config/private_fish/)
 - [starship](./private_dot_config/starship.toml) 终端提示符
@@ -13,6 +14,7 @@
 - [yazi](./private_dot_config/yazi/) TUI文件管理器
 - [zellij](./private_dot_config/zellij/)
 - [swaync](./private_dot_config/swaync/) 消息提醒
+- [bottom(btm)](./private_dot_config/bottom/)
 - [.local/bin/](./dot_local/bin/) 一些神秘小脚本
 
 </details>
